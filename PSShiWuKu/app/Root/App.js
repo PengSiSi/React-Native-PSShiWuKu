@@ -21,7 +21,7 @@ import MineScreen from './../Sections/Mine/Mine';
 import Setting from './../Sections/Setting/Setting';
 import TabBarItem from './../Common/TabBarItem';
 import Color from './../Config/Color';
-import Register from './../Sections/Login/Register';
+import RegisterPage from './../Sections/Login/Register';
 import HomeTypeList from './../Sections/Home/HomeTypeList';
 import FeedDetail from './../Sections/Feed/FeedDetail';
 import MyPhotoPage from './../Sections/Mine/MyPhotoPage';
@@ -195,7 +195,7 @@ const Navigator = StackNavigator({
         screen: Setting
     },
     RegisterScreen: {
-        screen: Register
+        screen: RegisterPage
     },
     HomeTypeListScreen: {
         screen: HomeTypeList

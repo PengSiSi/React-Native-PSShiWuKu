@@ -1,7 +1,7 @@
 /**
  * Created by 思思 on 17/5/7.
  */
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import {
     AppRegistry,
     StyleSheet,
@@ -14,8 +14,9 @@ import {
 
 import Color from './../../Config/Color';
 import Space from './../../Config/Space';
+import LCCountDownButton from './../../Common/LCCountDownButton';
 
-export default class Register extends Component {
+export default class  extends PureComponent {
 
     static navigationOptions = ({navigation,screenProps}) => ({  
         headerTitle: '注册', 
@@ -39,31 +40,50 @@ export default class Register extends Component {
     render() {
         return (
             <View style={styles.container}>
-               <View style={{width: Space.kScreenWidth * 0.9, marginBottom: 20, marginTop: 30}}>
-                    <TextInput
+               <View style={{width: Space.kScreenWidth * 0.9, marginBottom: 20, marginTop: 20, flexDirection: 'row', borderColor: 'gray', 
+               borderWidth: StyleSheet.hairlineWidth,
+               borderRadius: 20,backgroundColor: 'white'}}>
+                    <Image source={require('./../../Images/icon_phone.png')}
+                           style={styles.tipImageStyle}>
+                    </Image>
+                   <TextInput
                         style={styles.TextInputStyle}
-                        // onChangeText={(text) => this.setState({telephone: text})}
-                        // value={this.state.telephone}
+                        onChangeText={(text) => this.setState({telephone: text})}
+                        value={this.state.telephone}
                         // 这两个属性只有android能用
                         inlineImageLeft={require('./../../Images/ic_template_default.png')}
                         inlineImagePadding={10}
                         placeholder='手机号'>
                     </TextInput>
                </View>
-               <View style={{width: Space.kScreenWidth * 0.9}}>
+               <View style={{width: Space.kScreenWidth * 0.9,marginBottom: 20, marginTop: 20, flexDirection: 'row', borderColor: 'gray', 
+                     borderWidth: StyleSheet.hairlineWidth,
+                     borderRadius: 20,backgroundColor: 'white'}}>
+                    <Image source={require('./../../Images/icon_password.png')}
+                    style={styles.tipImageStyle}>
+                    </Image>
                     <TextInput
                         style={styles.TextInputStyle}
                         // onChangeText={(text) => this.setState({telephone: text})}
                         // value={this.state.telephone}
                         inlineImageLeft={require('./../../Images/ic_template_default.png')}
                         placeholder='验证码'>
-                        <TouchableOpacity
+                        {/*<TouchableOpacity
                             activeOpacity={0.75}
                             style={styles.fetchVerifyCodeStyle}
                             onPress={this.fetchVerifyCodeAction.bind(this)}>
                             <Text style={{fontSize: 16, color: 'white'}}>获取验证码</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity>*/}
                     </TextInput>
+                    <LCCountDownButton frameStyle={styles.countDownStyle}
+                    beginText='获取验证码'
+                    endText='再次获取验证码'
+                    count={60}
+                    pressAction={()=>{this.countDownButton.startCountDown()}}
+                    changeWithCount={(count)=> count + 's后重新获取'}
+                    id='register'   
+                    ref={(e)=>{this.countDownButton=e}}
+                    />
                </View>
                <View style={{marginTop: 20}}>
                  <Text style={{textAlign: 'center', fontSize: 13, color: 'gray'}}>仅支持中国大陆手机号注册,港,澳,台及海外用户请使用邮箱</Text>
@@ -85,6 +105,18 @@ export default class Register extends Component {
     fetchVerifyCodeAction() {
 
     }
+
+    // 这个方法就是上面pressAction触发
+    _countDownButtonPressed(){
+        // 1s 后触发倒计时  例如做网络请求后的再读秒
+    this.timer = setTimeout(this._triggerCount.bind(this),1000);
+}
+
+    // 拿到按钮，开始倒计时
+    _triggerCount(){
+        let button = this.countDownButton;
+        button.startCountDown();
+    }
 }
 
 const styles = StyleSheet.create({
@@ -105,11 +137,8 @@ const styles = StyleSheet.create({
     },
     TextInputStyle: {
         height: 40, 
-        borderColor: 'gray', 
-        borderWidth: 0.5,
-        borderRadius: 20,
-        backgroundColor: 'white',
-        fontSize: 13
+        fontSize: 13,
+        marginLeft: 10
     },
     fetchVerifyCodeStyle: {
         backgroundColor: '#53d769',
@@ -119,5 +148,21 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
         alignSelf: 'center',
         position: 'absolute'
+    },
+    tipImageStyle: {
+        width: 15,
+        height: 30,
+        marginLeft: 10,
+        marginTop: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    countDownStyle: {
+        top:3,
+        right:5,
+        width:120,
+        height:36,
+        position:'absolute',
+        borderRadius: 20
     }
 });
