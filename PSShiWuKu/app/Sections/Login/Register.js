@@ -9,7 +9,9 @@ import {
     View,
     Image,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    Keyboard,
+    ScrollView
 } from 'react-native';
 
 import Color from './../../Config/Color';
@@ -39,10 +41,8 @@ export default class  extends PureComponent {
 
     render() {
         return (
-            <View style={styles.container}>
-               <View style={{width: Space.kScreenWidth * 0.9, marginBottom: 20, marginTop: 20, flexDirection: 'row', borderColor: 'gray', 
-               borderWidth: StyleSheet.hairlineWidth,
-               borderRadius: 20,backgroundColor: 'white'}}>
+            <ScrollView>
+               <View style={[styles.itemViewStyle,{marginLeft: 10}]}>
                     <Image source={require('./../../Images/icon_phone.png')}
                            style={styles.tipImageStyle}>
                     </Image>
@@ -56,9 +56,7 @@ export default class  extends PureComponent {
                         placeholder='手机号'>
                     </TextInput>
                </View>
-               <View style={{width: Space.kScreenWidth * 0.9,marginBottom: 20, marginTop: 20, flexDirection: 'row', borderColor: 'gray', 
-                     borderWidth: StyleSheet.hairlineWidth,
-                     borderRadius: 20,backgroundColor: 'white'}}>
+               <View style={[styles.itemViewStyle,{marginLeft: 10, marginTop: 10}]}>
                     <Image source={require('./../../Images/icon_password.png')}
                     style={styles.tipImageStyle}>
                     </Image>
@@ -94,7 +92,7 @@ export default class  extends PureComponent {
                     onPress={this.nextAction.bind(this)}>
                     <Text style={{fontSize: 16, color: 'white'}}>下一步</Text>
                  </TouchableOpacity>
-            </View>
+            </ScrollView>
         );
     }
 
@@ -116,6 +114,10 @@ export default class  extends PureComponent {
     _triggerCount(){
         let button = this.countDownButton;
         button.startCountDown();
+    }
+
+    dismissKeyBoard() {
+        alert('收起键盘');
     }
 }
 
@@ -140,6 +142,11 @@ const styles = StyleSheet.create({
         fontSize: 13,
         marginLeft: 10
     },
+    itemViewStyle: {
+        width: Space.kScreenWidth * 0.9, marginBottom: 20, marginTop: 20, flexDirection: 'row', borderColor: 'gray', 
+        borderWidth: StyleSheet.hairlineWidth,
+        borderRadius: 20,backgroundColor: 'white'
+    },
     fetchVerifyCodeStyle: {
         backgroundColor: '#53d769',
         width: 100,
@@ -158,7 +165,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     countDownStyle: {
-        top:3,
+        top:2,
         right:5,
         width:120,
         height:36,

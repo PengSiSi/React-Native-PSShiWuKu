@@ -9,7 +9,8 @@ import {
     View,
     Image,
     ImageBackground,
-    ScrollView
+    ScrollView,
+    NetInfo
 } from 'react-native';
 
 import Color from './../../Config/Color';
