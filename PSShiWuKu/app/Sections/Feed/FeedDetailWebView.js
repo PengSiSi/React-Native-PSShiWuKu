@@ -28,12 +28,44 @@ export default class FeedDetail extends Component {
         headerStyle: {
             backgroundColor: 'white'  // 设置导航栏的背景颜色,headerTintColor设置无效
         }, 
+        headerRight:(
+            <View style={styles.triangleStyle}></View>
+        )
     }); 
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            height: 100
+        }
+    }
 
     render() {
         return (
             <View style={styles.container}>
-            <WebView
+            
+            {/*在html中监听高度的变化，把title设置为高度，
+               当title变化时，会触发WebView的onNavigationStateChange方法，获取到高度
+               参考链接： http://www.jianshu.com/p/d0964cb87d8d
+
+                <WebView
+                {...this.props}
+                source={{html: `<!DOCTYPE html><html><body>${this.props.htmlBody}<script>window.onload=function(){window.location.hash = 1;document.title = document.body.clientHeight;}</script></body></html>`}}
+                javaScriptEnabled={true}
+                style={[{height: this.state.height, backgroundColor: 'red'}, this.props.style]}
+                scrollEnabled={false}
+                automaticallyAdjustContentInsets={true}
+                contentInset={{top:0,left:0}}
+                onNavigationStateChange={(info)=>{
+                if (info.title) {
+                    this.setState({
+                    height: parseInt(info.title) + 20
+                    })
+                }
+                }}
+            />     
+            */}
+                <WebView
                 ref={this.webView}
                 automaticallyAdjustContentInsets={false}
                 style={styles.webView}
@@ -85,5 +117,16 @@ const styles = StyleSheet.create({
     webView: {
         width: Space.kScreenWidth,
         height: Space.kScreenHeight - 54
+    }, 
+    triangleStyle: {  // 画三角
+        width: 0,
+        height: 0,
+        borderStyle: 'solid',
+        borderWidth: 8,
+        marginTop: -8,
+        borderTopColor: 'transparent',//下箭头颜色
+        borderLeftColor: 'transparent',//右箭头颜色
+        borderBottomColor: 'gray',//上箭头颜色
+        borderRightColor: 'transparent'//左箭头颜色
     }
 });
