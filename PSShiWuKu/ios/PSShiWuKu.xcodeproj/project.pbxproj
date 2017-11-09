@@ -38,6 +38,7 @@
 		5F26221FA1B05772C8CD483C /* libPods-PSShiWuKu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7067C86C3A8E4BB745877706 /* libPods-PSShiWuKu.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		F11C71F01FB43BAF003CBB4D /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F11C71EC1FB43B85003CBB4D /* libRNDeviceInfo.a */; };
+		F11C71F81FB44980003CBB4D /* libRCTHttpCache.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F11C71F61FB44259003CBB4D /* libRCTHttpCache.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,6 +273,13 @@
 			remoteGlobalIDString = E72EC1401F7ABB5A0001BC90;
 			remoteInfo = "RNDeviceInfo-tvOS";
 		};
+		F11C71F51FB44259003CBB4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F11C71F11FB44259003CBB4D /* RCTHttpCache.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 915783311C33994800F5D8F8;
+			remoteInfo = RCTHttpCache;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -305,6 +313,7 @@
 		F11C71101FB43236003CBB4D /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11C71B21FB4337F003CBB4D /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11C71C91FB43B85003CBB4D /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
+		F11C71F11FB44259003CBB4D /* RCTHttpCache.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTHttpCache.xcodeproj; path = "../node_modules/react-native-http-cache/ios/RCTHttpCache.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +329,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11C71F81FB44980003CBB4D /* libRCTHttpCache.a in Frameworks */,
 				F11C71F01FB43BAF003CBB4D /* libRNDeviceInfo.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -502,6 +512,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F11C71F11FB44259003CBB4D /* RCTHttpCache.xcodeproj */,
 				F11C71C91FB43B85003CBB4D /* RNDeviceInfo.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -557,6 +568,14 @@
 			children = (
 				F11C71EC1FB43B85003CBB4D /* libRNDeviceInfo.a */,
 				F11C71EE1FB43B85003CBB4D /* libRNDeviceInfo-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F11C71F21FB44259003CBB4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F11C71F61FB44259003CBB4D /* libRCTHttpCache.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -695,6 +714,10 @@
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
+				},
+				{
+					ProductGroup = F11C71F21FB44259003CBB4D /* Products */;
+					ProjectRef = F11C71F11FB44259003CBB4D /* RCTHttpCache.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
@@ -959,6 +982,13 @@
 			fileType = archive.ar;
 			path = "libRNDeviceInfo-tvOS.a";
 			remoteRef = F11C71ED1FB43B85003CBB4D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F11C71F61FB44259003CBB4D /* libRCTHttpCache.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTHttpCache.a;
+			remoteRef = F11C71F51FB44259003CBB4D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
